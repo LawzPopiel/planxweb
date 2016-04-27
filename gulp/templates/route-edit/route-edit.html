@@ -1,0 +1,41 @@
+<div class="<%= path %>.edit">
+    <div class="page-header">
+        <h1><i class="fa fa-question-circle"></i> <%= prettyName %></h1>
+    </div>
+
+
+    <form-validator on-submit="vm.submit()" name="<%= formName %>Form">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-pencil"></i> Edit</div>
+            <div class="panel-body">
+               <fieldset>
+                    <legend>Section</legend>
+
+                    <table class="table-entry">
+                        <tr>
+                            <th>Label</th>
+                            <td>
+                                <input name="label" type="text" class="form-control" ng-model="vm.editItem.Label" />
+                            </td>
+                            <th>Date</th>
+                            <td><date-picker name="Date" ng-model="vm.editItem.Date"></date-picker></td>
+                        </tr>
+                        <tr>
+                            <th>Notes</th>
+                            <td colspan="5"><textarea name="Notes" type="text" class="form-control" ng-model="vm.editItem.Notes" ></textarea></td>
+                        </tr>
+
+                    </table>
+                </fieldset>
+
+                <div class="pull-right" style="margin-bottom: 1em;">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                    <button class="btn btn-default" ui-sref="app.<%= parentPath %>">Cancel</button>
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+        </div>
+
+    </form-validator>
+</div>

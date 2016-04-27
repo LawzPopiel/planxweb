@@ -1,0 +1,21 @@
+{
+  "name": "angular-typeahead",
+  "version": "0.3.1",
+  "subdomain": "Siyfion",
+  "private": true,
+  "main": "angular-typeahead.js",
+  "author": "siyfion@gmail.com",
+  "description": "An Angular.js wrapper around the Twitter Typeahead library.",
+  "contributors": [
+    {
+      "name": "Simon Mansfield",
+      "email": "siyfion@gmail.com"
+    }
+  ],
+  "keywords": [
+    "angular",
+    "angularjs",
+    "typeahead"
+  ],
+  "registry": "github"
+}

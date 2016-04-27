@@ -1,0 +1,1 @@
+module.exports = require("github:Siyfion/angular-typeahead@0.3.1/angular-typeahead");

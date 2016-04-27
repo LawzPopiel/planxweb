@@ -1,0 +1,1 @@
+module.exports = require("github:jeremypeters/ng-bs-animated-button@2.0.3/ng-bs-animated-button");

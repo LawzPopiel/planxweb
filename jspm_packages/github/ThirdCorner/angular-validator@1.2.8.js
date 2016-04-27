@@ -1,0 +1,1 @@
+module.exports = require("github:ThirdCorner/angular-validator@1.2.8/dist/angular-validator");

@@ -1,0 +1,237 @@
+ <ul class="nav navbar-nav navbar-left" bs-affix data-offset-top="1" style="width:100%" >
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.main-work">
+                            <i class="fa fa-fw fa-wrench"></i>
+                            AFE Section
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.storage">
+                            <i class="fa fa-fw fa-calculator"></i>
+                            Drill Design
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.wells">
+                            <i class="fa fa-fw fa-clock-o"></i>
+                            Phase Definitions
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.admin">
+                            <i class="fa fa-fw fa-line-chart"></i>
+                            Offset Comparisons
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.admin">
+                            <i class="fa fa-fw fa-dollar"></i>
+                            AFE Cost Sheet
+                        </a>
+                    </li>
+                </ul>
+
+<div class="storage.index" state-change="changeState">
+     <div class="page-header">
+        <h1>Drilling Estimating Tool</h1>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Drill Configuration</div>
+        <div class="panel-body">
+            <form name="mainentrysearch">
+                <table style="width: 100%;" class="search-table">
+                     <tr>
+                        <th width="15%">Engineer</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.SandSupplierInvoiceNumber" /></td>
+                        <th width="15%"># Well on Pad</th>
+                        <td width="15%">
+                            <select class="form-control" ng-model="vm.filter.SandSupplierID1"
+                                    ng-options="option.ID as (option.Name + (!option.IsActive ? ' (Inactive)' : '')) for option in vm.Sandrillers1">
+                                <option></option>
+                            </select>
+                        </td>
+                        <th width="15%">Drill Setup</th>
+                        <td width="15%">
+                            <select class="form-control" ng-model="vm.filter.SandSupplierID1"
+                                    ng-options="option.ID as (option.Name + (!option.IsActive ? ' (Inactive)' : '')) for option in vm.Sandrillers2">
+                                <option></option>
+                            </select>
+                        </td>
+                    </tr>                   
+                    
+                    
+
+
+              </table>
+                <table style="width: 100%;" class="search-table">
+                      <tr>
+                        <th width="15%">Rig</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber0" /></td>
+
+                        <th width="15%">Directional Co.</th>
+                        <td width="45%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber1" /></td>
+                    </tr>                   
+                    
+                </table> 
+                <table style="width: 100%;" class="search-table">  
+                    
+                     <tr>
+                        <th width="15%">JV</th>
+                        <td width="15%">
+                            <select class="form-control" ng-model="vm.filter.SandSupplierID1"
+                                    ng-options="option.ID as (option.Name + (!option.IsActive ? ' (Inactive)' : '')) for option in vm.SandSuppliers">
+                                <option></option>
+                            </select>
+                        </td>
+                        <th width="15%">Non-JV Location</th>
+                        <td width="15%">
+                            <select class="form-control" ng-model="vm.filter.SandSupplierID2"
+                                    ng-options="option.ID as (option.Name + (!option.IsActive ? ' (Inactive)' : '')) for option in vm.SandSuppliers">
+                                <option></option>
+                            </select>
+                        </td>
+
+                        <th width="15%">Batch Drilled?</th>
+                        <td width="15%">
+                            <select class="form-control" ng-model="vm.filter.SandSupplierID3"
+                                    ng-options="option.ID as (option.Name + (!option.IsActive ? ' (Inactive)' : '')) for option in vm.SandSuppliers">
+                                <option></option>
+                            </select>
+                        </td>
+                        
+                    </tr>                   
+                     <tr>
+                        <th width="15%">Logging</th>
+                        <td width="15%">
+                            <select class="form-control" ng-model="vm.filter.SandSupplierID1"
+                                    ng-options="option.ID as (option.Name + (!option.IsActive ? ' (Inactive)' : '')) for option in vm.SandSuppliers">
+                                <option></option>
+                            </select>
+                        </td>
+                        <th width="15%">Mud Logging</th>
+                        <td width="15%">
+                            <select class="form-control" ng-model="vm.filter.SandSupplierID2"
+                                    ng-options="option.ID as (option.Name + (!option.IsActive ? ' (Inactive)' : '')) for option in vm.SandSuppliers">
+                                <option></option>
+                            </select>
+                        </td>
+
+                        <th width="15%">Curve Build</th>
+                        <td width="15%">
+                            <select class="form-control" ng-model="vm.filter.SandSupplierID3"
+                                    ng-options="option.ID as (option.Name + (!option.IsActive ? ' (Inactive)' : '')) for option in vm.SandSuppliers">
+                                <option></option>
+                            </select>
+                        </td>
+                        
+                    </tr>                                   
+ 
+                </table>
+                <table style="width: 100%;" class="search-table">
+                   <tr>
+                        <th width="15%">SHL/POP x:</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber4" /></td>
+
+                        <th width="15%">FTP x:</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber5" /></td>
+
+                        <th width="15%">BHL x:</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber6" /></td>
+                    </tr>
+                   <tr>
+                        <th width="15%">SHL/POP y:</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber14" /></td>
+
+                        <th width="15%">FTP y:</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber15" /></td>
+
+                        <th width="15%">BHL y:</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber16" /></td>
+                    </tr>                                     
+                </table >  
+
+                    <div class="panel-group">
+                      <div class="panel panel-default">
+                          
+                        <div class="panel-heading">  Formation Tops (KBTV) </div>
+                        <div class="panel-body">  
+                   <table style="width: 100%;" class="search-table">
+                      <tr>
+                        <th width="15%">Base Santa Rosa</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber24" /></td>
+
+                        <th width="15%">San Andreas Shale</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber25" /></td>
+
+                        <th width="15%">SPBY L C1</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber26" /></td>
+                    </tr>
+                   <tr>
+                        <th width="15%">WFMP A1</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber24" /></td>
+
+                        <th width="15%">Landing Point</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber25" /></td>
+
+                        <th width="15%"></th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber26" /></td>
+                    </tr>
+                        </table>                   
+                        </div>
+
+                    </div>
+                    <div class="panel panel-warning">
+                          
+                        <div class="panel-heading"> Only Change if yu have a reason to do so  </div>
+                        <div class="panel-body">  
+                   <table style="width: 100%;" class="search-table">
+                      <tr>
+                        <th width="15%">RSS</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber24" /></td>
+
+                        <th width="15%">VS</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber25" /></td>
+
+                        <th width="15%">Step Out</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber26" /></td>
+                    </tr>
+
+                        </table>                   
+                        </div>
+
+                    </div>                   
+                    
+                   </div>                 
+    
+                <table style="width: 100%;" class="search-table">                                                                        
+                   <tr>
+                        <td colspan="5"></td>
+                        <td class="pull-right">
+                            <button class="btn btn-primary" ng-click="vm.isSearchable() === false" style="width: 150px;" type="submit" >Save Drill Data</button>
+                            <button class="btn btn-default" ng-click="vm.clearFilter()"><i class="fa fa-times"></i></button>
+                        </td>
+                    </tr>
+                       
+                    
+                </table>
+            </form>
+        </div>
+    </div>
+<!--    <div class="panel panel-default">
+        <div class="panel-heading pointer" ng-click="vm.toggleSearch()">
+            <span class="pull-right">
+                <button class="btn btn-primary btn-xs" ui-sref="app.storage.index.add()"><i class="fa fa-plus"></i> Add</button>
+            </span>
+            <i class="fa" ng-class="{ 'fa-caret-down': vm.enableResults, 'fa-caret-right': !vm.enableResults}"></i>
+            <i class="fa fa-navicon"></i> Search Results</div>
+        <div ng-if="vm.enableResults">
+            <div class="panel-body" ng-if="vm.filtering">
+                <storage-index-list filters="vm.tableFilters"></storage-index-list>
+            </div>
+            <div class="panel-body" ng-if="!vm.filtering">
+                <em>You need to set a filter.</em>
+            </div>
+        </div>
+    </div>  -->
+    <ui-view id="storage-form"></ui-view>
+</div>

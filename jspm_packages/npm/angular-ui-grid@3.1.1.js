@@ -1,0 +1,1 @@
+module.exports = require("npm:angular-ui-grid@3.1.1/index");

@@ -1,0 +1,1 @@
+module.exports = require("github:simplicitylabs/si-table@0.2.3/dist/si-table");

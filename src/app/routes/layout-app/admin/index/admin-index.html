@@ -1,0 +1,56 @@
+ <ul class="nav navbar-nav navbar-left" bs-affix data-offset-top="1" style="width:100%" >
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.main-work">
+                            <i class="fa fa-fw fa-wrench"></i>
+                            AFE Section
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.storage">
+                            <i class="fa fa-fw fa-calculator"></i>
+                            Drill Design
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.wells">
+                            <i class="fa fa-fw fa-clock-o"></i>
+                            Phase Definitions
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.admin">
+                            <i class="fa fa-fw fa-line-chart"></i>
+                            Offset Comparisons
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.admin">
+                            <i class="fa fa-fw fa-dollar"></i>
+                            AFE Cost Sheet
+                        </a>
+                    </li>
+                </ul>
+
+<div class="main-work.index">
+    <div class="page-header">
+        <h1> Drilling Estimating Tool</h1>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Offset Comparisons
+        </div>
+<!--        <div class="panel-body" ui-sref="app.admin.edit({id: item.ID})" ng-repeat="item in vm.DropdownItems">
+            {{item.Name}} <span class="pull-right"><i class="fa fa-caret-right"></i></span>
+        </div>  -->
+        <table>
+            <tr>
+        <td style="width:50px">Phase</td><td style="width:140px">Step</td><td style="width:80px">Day/Phase</td><td style="width:80px">Cum Days</td>
+        </tr>
+        
+          <tr ng-repeat="item in vm.DropdownItems">
+             <td style="width:50px">{{item.Phase}}</td><td style="width:140px">{{item.Name}}</td> <td style="width:80px"><input type="text" style="width:60px"/></td><td style="width:80px">{{item.CumDays}}</td>
+          </tr>       
+        </table>
+    </div>
+
+</div>

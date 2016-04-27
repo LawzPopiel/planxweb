@@ -1,0 +1,119 @@
+<div class="storage.edit">
+    <!--<div class="page-header">-->
+        <!--<h1><i class="fa fa-database"></i> Transload Tracking</h1>-->
+    <!--</div>-->
+
+
+    <form-validator on-submit="vm.submit()" name="StorageEditForm">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-pencil"></i> Edit</div>
+            <div class="panel-body">
+               <fieldset>
+
+                   <table class="table-entry">
+                       <tr>
+                           <th colspan="5">Attachment?</th>
+                           <td style="vertical-align: middle;"><input type="checkbox" name="attactment" ng-model="vm.editItem.Attachment" /></td>
+                       </tr>
+                       <tr>
+                           <th>Storage Facility Ticket #</th>
+                           <td><input type="text" class="form-control" name="StorageFacilityNumber" ng-model="vm.editItem.StorageFacilityNumber" required /></td>
+                           <th>Delivery Ticket #</th>
+                           <td><input type="text" class="form-control" ng-model="vm.editItem.DeliveryTicketNumber" /></td>
+                           <th>Inbound/Outbound</th>
+                           <td>
+                               <select class="form-control" name="inboundoutbound" ng-model="vm.editItem.InboundOutbound">
+                                   <option></option>
+                                   <option value="inbound">Inbound</option>
+                                   <option value="outbound">Outbound</option>
+                               </select>
+                           </td>
+                       </tr>
+                       <tr>
+                         <th>Storage Facility</th>
+                         <td>
+                           <input type="hidden" name="SandSupplierStorageFacilityGroupID" ng-model="vm.editItem.StorageFacilityGroupID" value="7" />
+                           <database-select options="vm.StorageFacilities" parent="vm.editItem" name="StorageFacility"></database-select>
+                         </td>
+                       </tr>
+                       <tr>
+                           <th>Mesh Size</th>
+                           <td colspan="3">
+                               <input type="hidden" name="MeshSizeGroupID" ng-model="vm.editItem.MeshSizeGroupID" value="2" />
+                               <database-select options="vm.MeshSizes" parent="vm.editItem" name="MeshSize"></database-select>
+                           </td>
+                       </tr>
+                       <tr >
+                           <th>Notes</th>
+                           <td colspan="3"><textarea type="text" class="form-control" name="notes" ng-model="vm.editItem.Notes"></textarea></td>
+                       </tr>
+                       <tr>
+                           <td colspan="6"><hr></td>
+                       </tr>
+                       <tr>
+                           <td colspan="4">
+                               <h4 style="font-size: 18px;">Transload Invoice</h4>
+                           </td>
+                           <th>Total</th>
+                           <td class="readonly-span" ng-model="vm.editItem.InvoiceAmount" value="{{vm.editItem.InvoiceAmount}}">
+                                {{vm.editItem.InvoiceAmount || 0 | currency}}
+                           </td>
+                       </tr>
+                       <tr>
+                           <td colspan="6"></td>
+                       </tr>
+                       <tr>
+                           <th>Invoice #</th>
+                           <td><input class="form-control" type="text" name="invoice-number" ng-model="vm.editItem.InvoiceNumber"></td>
+                           <th>Invoice Date</th>
+                           <td>
+                               <date-picker name="InvoiceDate" ng-model="vm.editItem.InvoiceDate"></date-picker>
+                           </td>
+                           <th>Date Invoice Coded</th>
+                           <td>
+                               <date-picker name="InvoiceCodedDate" ng-model="vm.editItem.InvoiceCodedDate" defaulted="true"></date-picker>
+                           </td>
+                       </tr>
+
+                       <tr>
+                           <th>Quantity Unloaded</th>
+                           <td>
+                               <weight-to-pounds ng-model="vm.editItem.QuantityUnloadedPounds" name="quantityweight"></weight-to-pounds>
+                           </td>
+                           <th>Unit Price</th>
+                           <td>
+                               <div class="form-group">
+                                   <div class="input-group">
+                                       <span class="input-group-addon">$</span>
+                               <input type="number" class="form-control" ng-model="vm.editItem.UnitPrice" />
+                                       </div>
+                                   </div>
+                           </td>
+                       </tr>
+                       <!--<tr>-->
+                           <!--<td colspan="5"></td>-->
+                           <!--<td>-->
+                               <!--<span class="btn-success" ng-if="vm.editItem.IsComplete" style="padding: 10px;">-->
+                                        <!--Completed! <span class="btn btn-xs btn-default" ng-click="vm.editItem.IsComplete = false"><i class="fa fa-times"></i></span>-->
+                                    <!--</span>-->
+                                      <!--<span class="btn btn-primary" ng-if="!vm.editItem.IsComplete" mm-modal-really-click="vm.editItem.IsComplete = true"-->
+                                            <!--mm-really-header="Confirm" mm-really-message="Are you sure you want to complete this record?">-->
+                                    <!--Complete Section?-->
+                                <!--</span>-->
+
+                           <!--</td>-->
+                       <!--</tr>-->
+                   </table>
+                </fieldset>
+
+                <div class="pull-right" style="margin-bottom: 1em;">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                    <button class="btn btn-default" ui-sref="app.storage">Cancel</button>
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+        </div>
+
+    </form-validator>
+</div>

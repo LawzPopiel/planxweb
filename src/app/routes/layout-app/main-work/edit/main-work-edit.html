@@ -1,0 +1,321 @@
+<div class="main-work.edit">
+    <!--<div class="page-header">-->
+        <!--<h1><i class="fa fa-bank"></i> Main Work Entry</h1>-->
+    <!--</div>-->
+
+
+    <form-validator on-submit="vm.submit()" name="mainWorkFormEdit">
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-pencil"></i> Edit</div>
+            <div class="panel-body">
+                <table class="table-entry" style="width: 100%;">
+                    <tr>
+                        <th>Sand Supplier</th>
+                        <td class="readonly-span">
+                            {{vm.editItem.SandSupplier.Name}}
+                        </td>
+                        <th>BOL #</th>
+                        <td class="readonly-span">
+                            {{vm.editItem.SandSupplier.BOLNumber}}
+                        </td>
+                        <th>PO Receipt #</th>
+                        <td class="readonly-span">
+                            {{vm.editItem.SandSupplier.POReceiptNumber}}</td>
+                        <th>Freight BOL #</th>
+                        <!--<td class="readonly-span comma-list">-->
+                            <!--<span ng-repeat="vendor in vm.editItem.FreightVendors">{{vendor.BOLNumber}}</span></td>-->
+                    </tr>
+                </table>
+                <br>
+
+                <fieldset>
+                    <table class="table-entry" style="width: 100%;">
+
+                        <tr>
+                            <th style="width: 80%">Attachment?</th>
+                            <td style="vertical-align: middle;"><input type="checkbox" name="attactment" ng-model="vm.editItem.Attachment" /></td>
+                        </tr>
+                        <tr>
+                            <th style="width: 80%">Diversion?</th>
+                            <td style="vertical-align: middle;"><input type="checkbox" name="diversion" ng-model="vm.editItem.Diversion" ng-click="vm.toggleDiversion()" ng-disabled="vm.lockDiversion == true" /></td>
+                        </tr>
+                        <tr>
+                            <th style="width: 80%">Duplicate?</th>
+                            <td style="vertical-align: middle;"><input type="checkbox" name="duplicate" ng-model="vm.editItem.IsDuplicate" /></td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <fieldset>
+                    <legend>Sand Supplier</legend>
+
+                    <table class="table-entry">
+                        <tr>
+                            <th>BOL #</th>
+                            <td class="bold">{{vm.editItem.SandSupplier.BOLNumber}}</td>
+                            <th>PO Receipt #</th>
+                            <td class="bold">{{vm.editItem.SandSupplier.POReceiptNumber}}</td>
+                            <th>PO #</th>
+                            <td class="bold">{{vm.editItem.SandSupplier.PONumber}}</td>
+                        </tr>
+                        <tr>
+                            <th>Sand Supplier</th>
+                            <td class="bold">{{vm.editItem.SandSupplier.Name}}</td>
+                            <th>Ship Date</th>
+                            <td>
+                                <date-picker name="ShipDate" ng-model="vm.editItem.SandSupplier.ShipDate"></date-picker>
+                              <input type="hidden" name="shipdatevalidator" ng-model="vm.editItem.SandSupplier.ShipDate"  validator="vm.validateShipDate()" invalid-message="'Date cannot be a future date!'" />
+                            </td>
+                            <th>Well Name</th>
+                            <td>
+                                <input type="hidden" name="SandSupplierWellNameGroupID" ng-model="vm.editItem.SandSupplier.WellNameGroupID" value="1" />
+                                <typeahead-input name="SandSupplierWellName"
+                                                 ng-model="vm.editItem.SandSupplier"
+                                                 model-key="WellNameID"
+                                                 options="vm.WellNames"
+                                                 display-key="Name" value-key="ID"></typeahead-input>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th>Asset Team</th>
+                            <td>
+                                <input type="hidden" name="SandSupplierAssetTeamGroupID" ng-model="vm.editItem.SandSupplier.AssetTeamGroupID" value="4" />
+                                <database-select options="vm.AssetTeams" parent="vm.editItem.SandSupplier" name="AssetTeam"></database-select>
+                            </td>
+                            <th>Fleet # and Department Code</th>
+                            <td>
+                                <input type="hidden" name="SandSupplierFleetGroupID" ng-model="vm.editItem.SandSupplier.FleetDepartmentCodeGroupID" value="6" />
+                                <database-select options="vm.FleetDepartmentCodes" parent="vm.editItem.SandSupplier" name="FleetDepartmentCode"></database-select>
+                            </td>
+                            <th>Storage Facility</th>
+                            <td>
+                                <input type="hidden" name="SandSupplierStorageFacilityGroupID" ng-model="vm.editItem.SandSupplier.StorageFacilityGroupID" value="7" />
+                                <database-select options="vm.StorageFacilities" parent="vm.editItem.SandSupplier" name="StorageFacility"></database-select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Storage Facility Ticket #</th>
+                            <td><input type="text" class="form-control" ng-model="vm.editItem.SandSupplier.StorageFacilityTicketNumber" /></td>
+
+                        </tr>
+                        <tr>
+                            <th>Service Date</th>
+                            <td>
+                                {{vm.editItem.SandSupplier.ServiceDate | date}}
+                            </td>
+                            <th>Receive Date</th>
+                            <td>
+                                {{vm.editItem.SandSupplier.ReceiveDate | date}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Mesh Size</th>
+                            <td class="bold" colspan="3">{{vm.editItem.SandSupplier.MeshSize}}</td>
+                        </tr>
+                        <tr>
+                            <th>Notes</th>
+                            <td colspan="3"><textarea type="text" class="form-control" ng-model="vm.editItem.SandSupplier.Notes" ></textarea></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <h4 style="font-size: 18px;">Invoice</h4>
+                            </td>
+                            <th>Total</th>
+                            <td class="readonly-span">
+                                {{ vm.editItem.SandSupplier.InvoiceAmount || 0 | currency}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6"></td>
+                        </tr>
+                        <tr>
+                            <th>Sand Invoice Number</th>
+                            <td><input type="text" class="form-control" ng-model="vm.editItem.SandSupplier.InvoiceNumber" /></td>
+                            <th>Sand Invoice Date</th>
+                            <td>
+                                <date-picker name="SandInvoiceDate" ng-model="vm.editItem.SandSupplier.InvoiceDate"></date-picker>
+                            </td>
+                            <th>Invoice Coded Date</th>
+                            <td>
+                                <date-picker name="SandInvoiceCodedDate" ng-model="vm.editItem.SandSupplier.InvoiceCodedDate" defaulted="true"></date-picker>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Weight</th>
+                            <td>
+                                <weight-to-pounds ng-model="vm.editItem.SandSupplier.WeightInPounds" name="weightinpounds"></weight-to-pounds>
+                            </td>
+                            <th>Price/Pound</th>
+                            <td>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">$</span>
+                                        <input type="number" class="form-control" ng-model="vm.editItem.SandSupplier.PricePerPound" />
+                                    </div>
+                                </div>
+
+                            </td>
+                            <th>Energy Surcharge</th>
+                            <td>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">$</span>
+                                <input type="number" class="form-control" ng-model="vm.editItem.SandSupplier.EnergySurcharge" />
+                                        </div>
+                                    </div>
+                            </td>
+                        </tr>
+                        <!--<tr>-->
+                            <!--<td colspan="5"></td>-->
+                            <!--<td>-->
+                                    <!--<span class="btn-success" ng-if="vm.editItem.SandSupplier.IsComplete" style="padding: 10px;">-->
+                                        <!--Completed!  <span class="btn btn-xs btn-default" ng-click="vm.editItem.SandSupplier.IsComplete = false"><i class="fa fa-times"></i></span>-->
+                                    <!--</span>-->
+                                  <!--<span class="btn btn-primary" ng-if="!vm.editItem.SandSupplier.IsComplete" mm-modal-really-click="vm.editItem.SandSupplier.IsComplete = true"-->
+                                        <!--mm-really-header="Confirm" mm-really-message="Are you sure you want to complete this record?">-->
+                                    <!--Complete Section?-->
+                                <!--</span>-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                    </table>
+                </fieldset>
+                <fieldset>
+
+                    <legend>Freight Vendors</legend>
+                    <fieldset ng-repeat="vendor in vm.editItem.FreightVendors">
+
+
+                        <table class="table-entry">
+                            <tr>
+                                <th colspan="5">Freight BOL #</th>
+                                <td class="readonly-span" style="height: 200%;">{{vendor.BOLNumber}}</td>
+                            </tr>
+                            <tr>
+                                <th>Freight Vendor</th>
+                                <td>
+                                    <input type="hidden" name="FreightVendorFreightVendorID" ng-model="vendor.FreightVendorGroupID" value="5" />
+                                    <database-select options="vm.FreightVendors" parent="vendor" name="FreightVendor"></database-select>
+                                </td>
+                                <th>Freight BOL #</th>
+                                <td><input type="text" class="form-control" ng-model="vendor.BOLNumber" /></td>
+                                <th>Weight</th>
+                                <td>
+                                    <weight-to-pounds ng-model="vendor.WeightInPounds" name="weightinpounds{{$index}}"></weight-to-pounds>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Well Name</th>
+                                <td>
+                                    <input type="hidden" name="FreightVendorWellNameID" ng-model="vendor.WellNameGroupID" value="1" />
+                                    <typeahead-input name="WellName"
+                                                     ng-model="vendor"
+                                                     model-key="WellNameID"
+                                                     options="vm.WellNames"
+                                                     display-key="Name" value-key="ID"></typeahead-input>
+                                </td>
+                                <th>Fleet # and Department Code</th>
+                                <td>
+                                    <input type="hidden" name="FreightVendorFleetDepartmentID" ng-model="vendor.FleetDepartmentCodeGroupID" value="6" />
+                                    <database-select options="vm.FleetDepartmentCodes" parent="vendor" name="FleetDepartmentCode"></database-select>
+                                </td>
+                                <th>Asset Team</th>
+                                <td>
+                                    <input type="hidden" name="FreightVendorAssetTeamsID" ng-model="vendor.AssetTeamGroupID" value="4" />
+                                    <database-select options="vm.AssetTeams" parent="vendor" name="AssetTeam"></database-select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Miles</th>
+                                <td>
+                                    <input class="form-control" type="number" name="miles" ng-model="vendor.Miles">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Notes</th>
+                                <td colspan="3"><textarea type="text" class="form-control" ng-model="vendor.Notes" ></textarea></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <h4 style="font-size: 18px;">Invoice</h4>
+                                </td>
+                                <th>Total</th>
+                                <td class="readonly-span">
+                                    {{vendor.InvoiceAmount || 0 | currency}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Freight Invoice Number</th>
+                                <td><input type="text" class="form-control" ng-model="vendor.InvoiceNumber" name="freightinvoicenumber" /></td>
+                                <th>Freight Invoice Date</th>
+                                <td><date-picker name="FreightInvoiceDate" ng-model="vendor.InvoiceDate"></date-picker></td>
+                                <th>Invoice Coded Date</th>
+                                <td>
+                                    <date-picker name="FreightInvoiceCodedDate" ng-model="vendor.InvoiceCodedDate" defaulted="true"></date-picker></td>
+                            </tr>
+                            <tr>
+                                <th>Freight Dollar Amount</th>
+                                <td>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">$</span>
+                                    <input type="number" class="form-control" ng-model="vendor.FreightDollarAmount" ng-change="vm.calculateFreightInvoiceAmount(vendor)"/>
+                                        </div>
+                                    </div>
+                                </td>
+                                <th>Fuel Surcharge Dollar Amount</th>
+                                <td>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">$</span>
+                                    <input type="number" class="form-control" ng-model="vendor.FuelSurchargeAmount" ng-change="vm.calculateFreightInvoiceAmount(vendor)"/>
+                                    </div></div>
+                                </td>
+                                <th>Other Misc Charges</th>
+                                <td>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">$</span>
+                                    <input type="number" class="form-control" ng-model="vendor.OtherMiscCharges" ng-change="vm.calculateFreightInvoiceAmount(vendor)" />
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>Detention Rate</th>
+                                <td><input type="number" class="form-control" ng-model="vendor.DetentionRate" ng-change="vm.calculateFreightInvoiceAmount(vendor)"/></td>
+                                <th>Detention Hours</th>
+                                <td><input type="number" class="form-control" ng-model="vendor.DetentionHours" ng-change="vm.calculateFreightInvoiceAmount(vendor)"/></td>
+                            </tr>
+                            <!--<tr>-->
+                                <!--<td colspan="5"></td>-->
+                                <!--<td>-->
+                                        <!--<span class="btn-success" ng-if="vendor.IsComplete" style="padding: 10px;">-->
+                                            <!--Completed! <span class="btn btn-xs btn-default" ng-click="vendor.IsComplete = false"><i class="fa fa-times"></i></span>-->
+                                        <!--</span>-->
+                                          <!--<span class="btn btn-primary" ng-if="!vendor.IsComplete" mm-modal-really-click="vendor.IsComplete = true"-->
+                                                <!--mm-really-header="Confirm" mm-really-message="Are you sure you want to complete this record?">-->
+                                        <!--Complete Section?-->
+                                    <!--</span>-->
+                                <!--</td>-->
+                            <!--</tr>-->
+
+                        </table>
+                        <hr>
+                    </fieldset>
+
+                </fieldset>
+
+                <div class="pull-right" style="margin-bottom: 1em;">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                    <button class="btn btn-default" ui-sref="app.main-work">Cancel</button>
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+        </div>
+
+    </form-validator>
+</div>

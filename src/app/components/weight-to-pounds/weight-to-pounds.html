@@ -1,0 +1,6 @@
+<div class="weight-to-pounds input-group">
+    <input class="form-control manual-input" type="decimal" name="{{name}}input" ng-model="vm.amount" style="width: 90px;">
+    <span class="input-group-addon">
+        <select class="form-control" style="min-width: 100px;" name="{{name}}select" ng-model="vm.weightType" ng-options="option as option for option in vm.types"></select>
+    </span>
+</div>

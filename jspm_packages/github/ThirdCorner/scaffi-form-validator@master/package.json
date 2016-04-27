@@ -1,0 +1,23 @@
+{
+  "name": "scaffi-form-validator",
+  "version": "1.0.0",
+  "description": "Scaffi Form Validator Component. Wraps angular validator for convenience",
+  "main": "scaffi-form-validator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThirdCorner/scaffi-form-validator.git"
+  },
+  "keywords": [
+    "form-validation",
+    "scaffi"
+  ],
+  "author": "Joseph Blake",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThirdCorner/scaffi-form-validator/issues"
+  },
+  "homepage": "https://github.com/ThirdCorner/scaffi-form-validator#readme"
+}

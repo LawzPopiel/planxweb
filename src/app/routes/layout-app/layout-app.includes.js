@@ -1,0 +1,17 @@
+'use strict';
+import './admin/admin';
+import './admin/edit/admin-edit-popup.component';
+import './admin/edit/admin-edit';
+import './admin/index/admin-index';
+import './main-work/edit/main-work-edit';
+import './main-work/index/main-work-index-list.component';
+import './main-work/index/main-work-index';
+import './main-work/main-work';
+import './storage/edit/storage-edit';
+import './storage/index/storage-index-list.component';
+import './storage/index/storage-index';
+import './storage/storage';
+import './wells/edit/wells-edit';
+import './wells/index/wells-index-list.component';
+import './wells/index/wells-index';
+import './wells/wells';

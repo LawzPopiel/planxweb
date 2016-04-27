@@ -1,0 +1,50 @@
+{
+  "name": "angular-messages",
+  "version": "1.5.3",
+  "description": "AngularJS module that provides enhanced support for displaying messages within templates",
+  "main": "angular-messages",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angular/angular.js.git"
+  },
+  "keywords": [
+    "angular",
+    "framework",
+    "browser",
+    "client-side"
+  ],
+  "author": "Angular Core Team <angular-core+npm@google.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/angular/angular.js/issues"
+  },
+  "homepage": "http://angularjs.org",
+  "jspm": {
+    "main": "angular-messages",
+    "shim": {
+      "angular-messages": {
+        "deps": [
+          "angular"
+        ]
+      }
+    },
+    "registry": "jspm",
+    "dependencies": {
+      "angular": "^1.5.0"
+    }
+  },
+  "shim": {
+    "angular-messages": {
+      "deps": [
+        "angular"
+      ]
+    }
+  },
+  "registry": "jspm",
+  "dependencies": {
+    "angular": "^1.5.0"
+  }
+}

@@ -1,0 +1,70 @@
+
+@import "variables";
+@import 'pstar';
+
+@import "base/base";
+
+
+@import "layout/helpers";
+
+@import "modules/header";
+@import "modules/animate";
+@import "modules/login";
+@import "modules/error-page";
+
+@import "components/alerts";
+@import "components/buttons";
+@import "components/tabs";
+@import "components/calendars";
+@import "components/panels";
+@import "components/typography";
+@import "components/progress-bars";
+@import "components/table";
+@import "components/forms";
+@import "components/modal";
+@import "components/label";
+@import "components/pagination";
+@import "components/color-picker";
+@import "components/spinner";
+@import "components/server-error";
+
+
+
+.bold {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+[ui-sref]:hover{
+  cursor: pointer;
+  background-color: darken(white,5%);
+}
+
+.has-error {
+  color: darkred;
+  font-weight: bold;
+}
+
+span[ng-click], tr[ng-click] {
+  cursor: pointer !important;
+}
+
+textarea {
+  min-height: 200px;
+}
+
+.input-group-addon > select.form-control {
+  padding: 0;
+  height: 20px;
+}
+
+input.ng-invalid-date {
+  border: 3px solid red;
+}
+
+.pointer {
+  cursor: pointer;
+}
+.lock-scroll {
+  position: fixed;
+  overflow: hidden;
+}

@@ -1,0 +1,1 @@
+module.exports = require("github:chieffancypants/angular-loading-bar@0.9.0/index");

@@ -1,0 +1,91 @@
+<ul class="nav navbar-nav navbar-left" bs-affix data-offset-top="1" style="width:100%" >
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.main-work">
+                            <i class="fa fa-fw fa-wrench"></i>
+                            AFE Section
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.storage">
+                            <i class="fa fa-fw fa-calculator"></i>
+                            Drill Design
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.wells">
+                            <i class="fa fa-fw fa-clock-o"></i>
+                            Phase Definitions
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.admin">
+                            <i class="fa fa-fw fa-line-chart"></i>
+                            Offset Comparisons
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.admin">
+                            <i class="fa fa-fw fa-dollar"></i>
+                            AFE Cost Sheet
+                        </a>
+                    </li>
+                </ul>
+                
+<div class="wells.index" state-change="changeState">
+    <div class="page-header">
+        <h1>Drilling Estimating Tool</h1>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading"><i class="fa fa-search"></i> Phase Definitions</div>
+        <div class="panel-body">
+            <form name="wellcleanoutsearchform">
+                <table style="width: 100%;" class="search-table">
+                    <tr>
+                        <th width="25%">Cleanout BOL#</th>
+                        <td width="25%">
+                            <input type="text" class="form-control" ng-model="vm.filter.CleanoutBOLNumber">
+                        </td>
+                        <th width="25%">Well Name</th>
+                        <td width="25%">
+                            <typeahead-input name="WellNameTo"
+                                             ng-model="vm.filter"
+                                             model-key="WellNameID"
+                                             options="vm.WellNames"
+                                             display-key="Name" value-key="ID" show-inactives="true"></typeahead-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Ship Date</th>
+                        <td>
+                            <date-picker ng-model="vm.filter.ShipDate"></date-picker>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td class="pull-right">
+                            <button class="btn btn-primary" ng-disabled="vm.isSearchable() === false" style="width: 100px;" type="submit" ng-click="vm.search()">Save Data</button>
+                            <button class="btn btn-default" ng-click="vm.clearFilter()"><i class="fa fa-times"></i></button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+<!--    <div class="panel panel-default">
+        <div class="panel-heading pointer" ng-click="vm.toggleSearch()">
+            <span class="pull-right">
+                <button class="btn btn-primary btn-xs" ui-sref="app.wells.index.add()"><i class="fa fa-plus"></i> Add</button>
+            </span>
+            <i class="fa" ng-class="{ 'fa-caret-down': vm.enableResults, 'fa-caret-right': !vm.enableResults}"></i>
+            <i class="fa fa-navicon"></i> Search Results</div>
+        <div ng-if="vm.enableResults">
+            <div class="panel-body" ng-if="vm.filtering">
+                <wells-index-list filters="vm.tableFilters"></wells-index-list>
+            </div>
+            <div class="panel-body" ng-if="!vm.filtering">
+                <em>You need to set a filter.</em>
+            </div>
+        </div>
+    </div>   -->
+    <ui-view id="wells-form"></ui-view>
+</div>

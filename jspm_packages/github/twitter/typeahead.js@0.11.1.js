@@ -1,0 +1,1 @@
+module.exports = require("github:twitter/typeahead.js@0.11.1/dist/typeahead.bundle");

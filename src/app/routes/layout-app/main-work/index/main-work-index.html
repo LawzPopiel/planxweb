@@ -1,0 +1,161 @@
+
+<div class="main-work.index" state-change="changeState" style="margin-top:-50px">
+<nav class="navbar">
+    <div class="container-fluid">
+
+        <ul class="nav navbar-nav navbar-left">
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.main-work">
+                            <i class="fa fa-fw fa-wrench"></i>
+                            AFE Section
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.storage">
+                            <i class="fa fa-fw fa-calculator"></i>
+                            Drill Design
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.wells">
+                            <i class="fa fa-fw fa-clock-o"></i>
+                            Phase Definitions
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.admin">
+                            <i class="fa fa-fw fa-line-chart"></i>
+                            Offset Comparisons
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.admin">
+                            <i class="fa fa-fw fa-dollar"></i>
+                            AFE Cost Sheet
+                        </a>
+                    </li>
+                </ul>
+      </div>
+</nav>
+   
+   
+
+
+ 
+
+
+   
+    
+    <div class="panel panel-default" style="margin-left: 230px">
+    <div class="page-header">
+        <h1>Drilling Estimating Tool</h1>
+    </div>
+        
+        
+        <div class="panel-heading">AFE Information</div>
+        <div class="panel-body">
+               
+            
+            
+            <form name="mainentrysearch">
+                <table style="width: 100%;" class="search-table">
+                    <tr>
+                        <th width="15%">Budget</th>
+                        <td width="15%">
+                            <select class="form-control" ng-model="vm.filter.SandSupplierID1"
+                                    ng-options="option.ID as (option.Name + (!option.IsActive ? ' (Inactive)' : '')) for option in vm.SandSuppliers">
+                                <option></option>
+                            </select>
+                        </td>
+                        <th width="15%">Type</th>
+                        <td width="15%">
+                            <select class="form-control" ng-model="vm.filter.SandSupplierID2"
+                                    ng-options="option.ID as (option.Name + (!option.IsActive ? ' (Inactive)' : '')) for option in vm.SandSuppliers">
+                                <option></option>
+                            </select>
+                        </td>
+
+                        <th width="15%">Classification</th>
+                        <td width="15%">
+                            <select class="form-control" ng-model="vm.filter.SandSupplierID3"
+                                    ng-options="option.ID as (option.Name + (!option.IsActive ? ' (Inactive)' : '')) for option in vm.SandSuppliers">
+                                <option></option>
+                            </select>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <th width="15%">Lease</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.SandSupplierInvoiceNumber" /></td>
+                        <th width="15%">Well #</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.SandSupplierServiceDate"></td>
+                        <th width="15%">Well Type</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.SandSupplierReceivedDate"></td>
+                    </tr>
+              </table>
+                <table style="width: 100%;" class="search-table">
+                      <tr>
+                        <th width="15%">Location</th>
+                        <td width="75%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber1" /></td>
+                    </tr>
+                </table> 
+                <table style="width: 100%;" class="search-table">                 
+                    <tr>
+                        <th width="15%">County</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber2" /></td>
+
+                        <th width="15%">State</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber3" /></td>
+
+                        <th width="15%">Prospect</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber3" /></td>
+                    </tr> 
+                </table>
+                <table style="width: 100%;" class="search-table">
+                   <tr>
+                        <th width="15%">Field</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber4" /></td>
+
+                        <th width="15%">Formation</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber5" /></td>
+
+                        <th width="15%">PTD</th>
+                        <td width="15%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber6" /></td>
+                    </tr>                 
+                </table >  
+                <table style="width: 100%;" class="search-table">   
+                      <tr>
+                        <th width="15%">Proposal</th>
+                        <td width="75%"><input type="text" class="form-control" ng-model="vm.filter.FreightVendorBOLNumber7" /></td>
+                    </tr>                    
+                </table>    
+                <table style="width: 100%;" class="search-table">                                                                        
+                   <tr>
+                        <td colspan="5"></td>
+                        <td class="pull-right">
+                            <button class="btn btn-primary" ng-click="vm.isSearchable() === false" style="width: 150px;" type="submit" >Save AFE Data</button>
+                            <button class="btn btn-default" ng-click="vm.clearFilter()"><i class="fa fa-times"></i></button>
+                        </td>
+                    </tr>
+                       
+                    
+                </table>
+            </form>
+        </div>
+    </div>
+<!--    <div class="panel panel-default">
+        <div class="panel-heading pointer" ng-click="vm.toggleSearch()">
+            <i class="fa" ng-class="{ 'fa-caret-down': vm.enableResults, 'fa-caret-right': !vm.enableResults}"></i>
+            <i class="fa fa-navicon"></i> Search Results
+        </div>
+        <div ng-if="vm.enableResults">
+            <div class="panel-body" ng-if="vm.filtering">
+                <main-work-index-list filters="vm.tableFilters"></main-work-index-list>
+            </div>
+            <div class="panel-body" ng-if="!vm.filtering">
+                <em>You need to set a filter.</em>
+            </div>
+        </div>
+    </div>  -->
+    <ui-view id="main-form"></ui-view>
+</div>

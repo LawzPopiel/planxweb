@@ -1,0 +1,50 @@
+.server-error {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 600px;
+  background-color: #d9e0e7;
+  z-index: 2000;
+  border-left: 1px solid rgba(45, 53, 60, 0.2);
+
+  -webkit-box-shadow: -4px 0px 7px -1px rgba(0,0,0,0.23);
+  -moz-box-shadow: -4px 0px 7px -1px rgba(0,0,0,0.23);
+  box-shadow: -4px 0px 7px -1px rgba(0,0,0,0.23);
+
+
+  .page-header {
+    background-color: #e1ae19;
+    color: white;
+    font-weight: bold;
+    height: 65px;
+    text-align: center;
+    vertical-align: middle;
+
+    border: none;
+
+    h1 {
+      color: white;
+      margin-top: 5px;
+    }
+
+  }
+  .item {
+    padding: 5px 0 5px 0;
+    & > * {
+      vertical-align: text-top;
+    }
+    label {
+      width: 20%;
+      text-align: right;
+      font-size: .9em;
+    }
+    .text {
+      word-break: break-all;
+      display: inline-block;
+      width: 77%;
+      padding: 0 1% 0 3%;
+      font-size: 1.2em;
+    }
+  }
+}

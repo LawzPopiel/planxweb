@@ -1,0 +1,1 @@
+module.exports = require("github:request/request-promise@2.0.1/lib/rp");

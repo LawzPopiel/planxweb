@@ -1,0 +1,53 @@
+<div class="admin.edit">
+    <form-validator on-submit="vm.submit()" name="AdminEditForm">
+        <div class="page-header">
+            <h1><i class="fa fa-bars"></i>  {{vm.editItem.Name}}</h1>
+        </div>
+
+        <div class="alert alert-danger" role="alert">
+            <em>Any value changes will affect all previous records attached to that option.
+                If you're changing the name of something, consider making a new option if you want it to be tracked differently than older records.
+            </em>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-pencil"></i> Modify Dropdown Values
+                <span class="pull-right" style="margin-top: -6px;">
+                    <a class="btn btn-primary btn-sm" ng-click="vm.addItem()"><i class="fa fa-plus"></i> Add</a>
+                    <a class="btn btn-primary btn-sm" ng-click="vm.showInactives = !vm.showInactives">
+                        <i class="fa"
+                           ng-class="{'fa-eye-slash': vm.showInactives, 'fa-eye': !vm.showInactives }"></i> {{ showInactives ? "HIde Inactives" : "Show Inactives"}}</a>
+                </span>
+            </div>
+            <div class="panel-body">
+               <fieldset>
+                   <div class="row" ng-if="vm.hasActiveItem() || vm.showInactives">
+                        <div class="form-group col-xs-3">
+                            <label class="control-label">Display</label>
+                        </div>
+                   </div>
+                   <div class="row" ng-repeat="item in vm.editItem.ListOptions" ng-if="item.IsActive || vm.showInactives">
+                       <div class="form-group col-xs-3">
+                           <input type="text" class="form-control" name="display-name{{item.ID}}" ng-model="item.Name" required />
+                       </div>
+                       <div class="col-xs-3">
+                           <a class="btn btn-success" style="background-color: #83C19F;" ng-show="item.IsActive" ng-click="item.IsActive = false">Active</a>
+                           <a class="btn btn-default" ng-show="!item.IsActive" ng-click="item.IsActive = true">Inactive</a>
+                       </div>
+                   </div>
+                   <div ng-if="!vm.hasActiveItem()">
+                       <em>No options active. {{vm.editItem.ListOptions.length}} options inactive.</em>
+                   </div>
+                </fieldset>
+
+                <div class="pull-right" style="margin-bottom: 1em;">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                    <button class="btn btn-default" ui-sref="app.admin">Cancel</button>
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+        </div>
+
+    </form-validator>
+</div>
